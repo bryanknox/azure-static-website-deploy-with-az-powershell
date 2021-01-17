@@ -1,8 +1,10 @@
 # Azure Static Website Deploy with Az PowerShell
 
-Az PowerShell scripts to provision and deploy a static website in Azure Storage with Azure CDN for a custom domain and HTTPS.
+Az PowerShell scripts for provisioning and deploying static websites in Azure Storage with Azure CDN for a custom domain and HTTPS.
 
-Use PowerShell 7 and the scripts will work on Linux, MacOS, and Windows.
+Azure CDN-Managed certificates are used for HTTPS
+
+> Use PowerShell 7 and the scripts will work on Linux, MacOS, and Windows.
 
 # Steps
 
@@ -16,7 +18,7 @@ Those files allow you configure the variable values to be used for individual en
 
 See `./Environments/Environment-ScriptVariables-ReadMe.md` for detailed information about the content of those files.
 
-TIP: Create a new `{environmentName}.ScriptVariables.json` from a copy of the `sample.ScriptVariables.json` file.
+> TIP: Create a new `{environmentName}.ScriptVariables.json` from a copy of the `sample.ScriptVariables.json` file.
 
 
 ## Install Az PowerShell Modules
@@ -28,7 +30,8 @@ PowerShell:
 ```
 
 ## Sign in to Azure Subscription for the Environment
-Use the following PowerShell command to log into the Azure Subscription for a specific environment.
+Log into the Azure Subscription 
+in a specific environment by using the following PowerShell command.
 
 PowerShell:
 ```
@@ -36,7 +39,8 @@ PowerShell:
 ```
 
 ## Provision Static Website and CDN for the Environment
-Use the following PowerShell command to provision the static website's Azure Storage Account, Azure CDN Profile and Azure CDN Endpoint for a specific environment.
+Provision the static website's Azure Storage Account, Azure CDN Profile and Azure CDN Endpoint
+in a specific environment by using the following PowerShell command.
 
 PowerShell:
 ```
@@ -46,21 +50,20 @@ PowerShell:
 The script will output information that is needed to to set up the DNS for the static website's custom domain for the environment.
 
 ## Upload Static Website Content for the Environment
-Use the following PowerShell command to upload the static website's content to Azure Storage for a specific environment.
+Upload the static website's content to Azure Storage
+in a specific environment by using the following PowerShell command.
 
 PowerShell:
 ```
 ./Upload-Files-to-Static-Website.ps1
 ```
 
-NOTE: It may take a while before newly uploaded content is available on the CDN. It should be immediately available in Azure Storage.
+> NOTE: It may take a while before newly uploaded content is available on the CDN. It should be immediately available in Azure Storage.
 
 ## Test the Static Website in Azure Storage for the Environment
-Browse to the "Storage URL" output by the provisioning or upload scripts to test that the static website is being
-serviced from Azure Storage.
+Browse to the "Storage URL" output by the provisioning or upload scripts to test that the static website is being serviced from Azure Storage.
 
 ## Add CNAME Records in DNS for the Environment
-
 Create CNAME records in DNS at your DNS provider's website.
 
 You should create both a `cdnverify` CNAME record and a permanent CNAME record. The source and content of the `cdnverify` CNAME record are the same as permanent CNAME record, but they are prefixed with `cdnverify.`.
@@ -72,20 +75,19 @@ Example permanent CNAME record:
 CNAME play5.mydomain.com static-website-endpoint-play5.azureedge.net  
 ```
 
-Example cdnverify CNAME record:
+Example `cdnverify` CNAME record:
 ```
 CNAME cdnverify.play5.mydomain.com cdnverify.static-website-endpoint-play5.azureedge.net  
 ```
 
-NOTE: After the custom domain has been added to the CDN endpoint, the `cdnverify` CNAME record is no longer needed and should be removed from DNS.
-
 For more details see:
 https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain?tabs=azure-dns#create-a-cname-dns-record
 
+> NOTE: After the custom domain has been added to the CDN endpoint, the `cdnverify` CNAME record is no longer needed and should be removed from DNS.
 
 ## Add Custom Domain and HTTPS for Environment
-Use the following PowerShell command to add the custom domain to the Azure CDN Endpoint and
-enable HTTPS for a specific environment.
+Add the custom domain to the Azure CDN Endpoint and enable HTTPS
+in a specific environment by using the following PowerShell command.
 
 PowerShell:
 ```
@@ -103,9 +105,10 @@ After the custom domain has been added to the CDN endpoint for the environment, 
 # Cleaning up.
 
 ## Removing Azure Resources
-You can use the following PowerShell command to remove the Azure Resources for a specific environment.
+Remove the Azure Resources
+in a specific environment by using the following PowerShell command.
 
-WARNING: The script removes the entire Azure Resource Group and the resources contained in it.
+> WARNING: The script removes the entire Azure Resource Group and all of the resources it contains.
 
 PowerShell:
 ```
@@ -113,7 +116,8 @@ PowerShell:
 ```
 
 ## Uninstalling Az PowerShell Modules
-The following PowerShell command can be used to uninstall ALL versions of the Az PowerShell Modules.
+Uninstall ALL versions of the Az PowerShell Modules
+by using the following PowerShell command.
 
 PowerShell:
 ```
@@ -126,7 +130,8 @@ You can modify that PowerShell script to uninstall specific versions.
 # Utility Scripts
 
 ## Get-Static-Website-URLs.ps1
-Get the URLs for the static website in a specific environment by using the following PowerShell command.
+Get the URLs for the static website
+in a specific environment by using the following PowerShell command.
 
 PowerShell:
 ```
