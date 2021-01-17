@@ -1,0 +1,14 @@
+{
+    "subscriptionName": "Visual Studio Enterprise",
+    "location": "West US",
+    "resourceGroupName": "Static-WebSite-play5-rg",
+    "websiteStorageAccountName": "statwebsitestoreplay5",
+    "websiteStorageAccountSkuName": "Standard_LRS",
+    "websiteIndexDoc": "index.html",
+    "websiteErrorDocument404Path": "error404.html",
+    "websiteUploadFolderPath": "./SampleStaticWebsiteFiles",
+    "cdnProfileName": "static-website-profile-play5",
+    "cdnProfileSku": "Premium_Verizon",
+    "cdnEndpointName": "static-website-endpoint-play5",
+    "cdnCustomDomainHostName": "play5.mydomain.com"
+}
