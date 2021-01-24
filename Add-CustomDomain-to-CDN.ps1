@@ -84,8 +84,6 @@ Enable-AzCdnCustomDomainHttps `
 Write-Host "`nIMPORTANT!" -ForegroundColor "Blue"
 Write-Host "Record the information displayed belew in Blue (the same color as this text)." -ForegroundColor "Blue"
 
-Write-Host "`nStorage URL: $($storageAccount.PrimaryEndpoints.Web)" -ForegroundColor "Blue"
-
 Write-Host "`nCDN Endpoint URL: https://$($endpoint.HostName)" -ForegroundColor "Blue"
 
 Write-Host "`nCustom Domain URL: https://$($variables['cdnCustomDomainHostName'])" -ForegroundColor "Blue"

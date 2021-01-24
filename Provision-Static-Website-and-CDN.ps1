@@ -159,6 +159,11 @@ Write-Host "Name: $($variables['cdnCustomDomainHostName'])" -ForegroundColor "Bl
 Write-Host "Content: $($endpoint.HostName)" -ForegroundColor "Blue"
 Write-Host "Example:" -ForegroundColor "Blue"
 Write-Host "CNAME $($variables['cdnCustomDomainHostName']) $($endpoint.HostName)" -ForegroundColor "Blue"
+Write-Host
+Write-Host "Name: cdnverify.$($variables['cdnCustomDomainHostName'])" -ForegroundColor "Blue"
+Write-Host "Content: cdnverify.$($endpoint.HostName)" -ForegroundColor "Blue"
+Write-Host "Example:" -ForegroundColor "Blue"
+Write-Host "CNAME cdnverify.$($variables['cdnCustomDomainHostName']) cdnverify.$($endpoint.HostName)" -ForegroundColor "Blue"
 
 Write-Host "`nIMPORTANT!" -ForegroundColor "Blue"
 Write-Host "Record the information displayed above in Blue (the same color as this text)." -ForegroundColor "Blue"
