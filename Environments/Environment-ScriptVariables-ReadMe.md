@@ -40,7 +40,14 @@ Example:
 ## resourceGroupName
 The name of the Azure Resource Group that will contain all of the Azure resources.
 
-This resource group will be created if it does not already exist.
+The resource group will be created if it does not already exist.
+
+Resource group name:
+- Unique within the containing Azure subscription.
+- 1-64 characters
+- Alphanumeric, underscores, parentheses, hyphens, periods, and Unicode characters that match the allowed characters.
+  - Regex pattern: `^[-\w\._\(\)]+$`
+- Can't end with period
 
 Example:
 ```json
@@ -51,6 +58,11 @@ Example:
 
 ## websiteStorageAccountName
 The name of the Azure Storage account where the static website will be stored and hosted.
+
+Storage Account Names:
+- Globally unique, across all subscriptions in Azure
+- 3-24 characters
+- Only lowercase letters and numbers
 
 Example:
 ```json
@@ -95,9 +107,16 @@ Example:
 ## cdnProfileName
 The name of the Azure CDN Profile to be provisioned.
 
+CDN Profile Names:
+- Unique within the containing Azure resource group.
+- 1-260 characters
+- Alphanumeric and hyphens
+- Start and end with alphanumeric
+- Only 8 profiles are allowed per subscription
+
 Example:
 ```json
-"cdnProfileName": "static-website-profile-k0x-play5",
+"cdnProfileName": "static-website-profile-play5",
 ```
 
 ## cdnProfileSku
@@ -113,13 +132,19 @@ The name of the Azure CDN Endpoint to be provisioned.
 This is the endpoint that is exposed to the internet for accessing the static website.
 The CDN serves the static websites content from this endpoint.
 
+CDN Endpoint Names:
+- Globally unique, across all subscriptions in Azure
+- 1-50 characters
+- Alphanumeric and hyphens
+- Start and end with alphanumeric
+
 Example:
 ```json
-"cdnEndpointName": "static-website-endpoint-k0x-play5"
+"cdnEndpointName": "static-website-endpoint-play5"
 ```
 
 ## cdnCustomDomainHostName
-The customd domain host name to be used for the static website.
+The custom domain host name to be used for the static website.
 
 Example:
 ```json

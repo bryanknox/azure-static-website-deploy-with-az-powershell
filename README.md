@@ -35,7 +35,7 @@ in a specific environment by using the following PowerShell command.
 
 PowerShell:
 ```
-./Signin-to-Azure-Subscription.ps1
+./Signin-to-Azure-Subscription.ps1 -EnvironmentName play5
 ```
 
 ## Provision Static Website and CDN for the Environment
@@ -44,7 +44,7 @@ in a specific environment by using the following PowerShell command.
 
 PowerShell:
 ```
-./Provision-Static-Website-and-CDN.ps1
+./Provision-Static-Website-and-CDN.ps1 -EnvironmentName play5
 ```
 
 The script will output information that is needed to to set up the DNS for the static website's custom domain for the environment.
@@ -55,7 +55,7 @@ in a specific environment by using the following PowerShell command.
 
 PowerShell:
 ```
-./Upload-Files-to-Static-Website.ps1
+./Upload-Files-to-Static-Website.ps1 -EnvironmentName play5
 ```
 
 > NOTE: It may take a while before newly uploaded content is available on the CDN. It should be immediately available in Azure Storage.
@@ -66,24 +66,15 @@ Browse to the "Storage URL" output by the provisioning or upload scripts to test
 ## Add CNAME Records in DNS for the Environment
 Create CNAME records in DNS at your DNS provider's website.
 
-You should create both a `cdnverify` CNAME record and a permanent CNAME record. The source and content of the `cdnverify` CNAME record are the same as permanent CNAME record, but they are prefixed with `cdnverify.`.
-
 Use the information output by the `Provision-Static-Website-and-CDN.ps1` script.
 
-Example permanent CNAME record:
+Example CNAME record:
 ```
 CNAME play5.mydomain.com static-website-endpoint-play5.azureedge.net  
 ```
 
-Example `cdnverify` CNAME record:
-```
-CNAME cdnverify.play5.mydomain.com cdnverify.static-website-endpoint-play5.azureedge.net  
-```
-
 For more details see:
 https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain?tabs=azure-dns#create-a-cname-dns-record
-
-> NOTE: After the custom domain has been added to the CDN endpoint, the `cdnverify` CNAME record is no longer needed and should be removed from DNS.
 
 ## Add Custom Domain and HTTPS for Environment
 Add the custom domain to the Azure CDN Endpoint and enable HTTPS
@@ -91,16 +82,13 @@ in a specific environment by using the following PowerShell command.
 
 PowerShell:
 ```
-./Add-CustomDomain-to-CDN.ps1
+./Add-CustomDomain-to-CDN.ps1 -EnvironmentName play5
 ```
 
+> NOTE: It can take up to 6-8 hours for the custom domain HTTPS feature to be activated."
+
 ## Test the Static Website in Azure CDN for the Environment
-Browse to the "CDN Endpoint URL" output by the add custom domain script to test that the static website is being
-serviced from the Azure CDN.
-
-## Remove the cdnverify CNAME record from DNS
-
-After the custom domain has been added to the CDN endpoint for the environment, the `cdnverify` CNAME record is no longer needed and should be removed from DNS.
+Browse to the "CDN Endpoint URL" output by the add custom domain script to test that the static website is being served from the Azure CDN.
 
 # Cleaning up.
 
