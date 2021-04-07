@@ -96,12 +96,18 @@ Browse to the "CDN Endpoint URL" output by the add custom domain script to test 
 Remove the Azure Resources
 in a specific environment by using the following PowerShell command.
 
+> See the notes about removing CNAME records in DNS below.
+
 > WARNING: The script removes the entire Azure Resource Group and all of the resources it contains.
 
 PowerShell:
 ```
 ./Remove-Azure-Resources.ps1
 ```
+#### Remove CNAME records before removing CDN endpoints
+Before you can remove Azure CDN endpoints that are associated with a custom domain name, you must first remove the CNAME records from DNS associated with that endpoint.
+
+See Microsoft Docs: [Prevent dangling DNS entries and avoid subdomain takeover](https://docs.microsoft.com/en-us/azure/security/fundamentals/subdomain-takeover)
 
 ## Uninstalling Az PowerShell Modules
 Uninstall ALL versions of the Az PowerShell Modules
