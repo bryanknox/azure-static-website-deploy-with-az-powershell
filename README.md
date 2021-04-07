@@ -96,7 +96,7 @@ Browse to the "CDN Endpoint URL" output by the add custom domain script to test 
 Remove the Azure Resources
 in a specific environment by using the following PowerShell command.
 
-> See the notes about removing CNAME records in DNS below.
+> See the notes below about removing CNAME records first.
 
 > WARNING: The script removes the entire Azure Resource Group and all of the resources it contains.
 
